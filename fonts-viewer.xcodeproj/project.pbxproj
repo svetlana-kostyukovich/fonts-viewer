@@ -13,6 +13,7 @@
 		C4489BE8210347D400345B7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4489BE7210347D400345B7A /* Assets.xcassets */; };
 		C4489BEB210347D400345B7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4489BE9210347D400345B7A /* LaunchScreen.storyboard */; };
 		C4489BF6210347D400345B7A /* fonts_viewerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4489BF5210347D400345B7A /* fonts_viewerTests.swift */; };
+		C4489C01210349B600345B7A /* FontCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4489C00210349B600345B7A /* FontCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		C4489BF1210347D400345B7A /* fonts-viewerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "fonts-viewerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4489BF5210347D400345B7A /* fonts_viewerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fonts_viewerTests.swift; sourceTree = "<group>"; };
 		C4489BF7210347D400345B7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4489C00210349B600345B7A /* FontCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				C4489BE0210347D300345B7A /* AppDelegate.swift */,
 				C4489BE2210347D300345B7A /* ViewController.swift */,
 				C4489BE4210347D300345B7A /* Main.storyboard */,
+				C4489C00210349B600345B7A /* FontCell.swift */,
 				C4489BE7210347D400345B7A /* Assets.xcassets */,
 				C4489BE9210347D400345B7A /* LaunchScreen.storyboard */,
 				C4489BEC210347D400345B7A /* Info.plist */,
@@ -197,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4489C01210349B600345B7A /* FontCell.swift in Sources */,
 				C4489BE3210347D300345B7A /* ViewController.swift in Sources */,
 				C4489BE1210347D300345B7A /* AppDelegate.swift in Sources */,
 			);

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +18,19 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        //TODO: refactor reuseIdentifier
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FontDescriptionCell", for: indexPath) as! FontCell
+        
+        //TODO: refactor
+        cell.backgroundColor = UIColor.blue
+        return cell
     }
 
 
