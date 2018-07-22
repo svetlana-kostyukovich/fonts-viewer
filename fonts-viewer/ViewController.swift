@@ -18,7 +18,7 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
     // MARK: initials
     override func viewDidLoad() {
         super.viewDidLoad()
-        createFontsList()
+        initFontsList()
 
         self.navigationController!.navigationBar.isHidden = true
         // Do any additional setup after loading the view, typically from a nib.
@@ -62,7 +62,7 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     // MARK: - createFontsList
-    private func createFontsList() {
+    private func initFontsList() {
         for familyName in UIFont.familyNames {
             let fontNames = UIFont.fontNames(forFamilyName: familyName)
             for fontExtended in fontNames {
