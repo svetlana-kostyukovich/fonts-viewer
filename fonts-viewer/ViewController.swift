@@ -60,7 +60,7 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     // MARK: - UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width/2-10.0, height: collectionView.frame.height/4-20.0)
+        return CGSize(width: collectionView.frame.width/2-10.0, height: collectionView.frame.height/4-10.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -79,6 +79,7 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
                 let weightIndex = nameIndex != fontExtended.endIndex ? fontExtended.index(nameIndex, offsetBy: 1) : fontExtended.endIndex // Weight extracting if existing
                 
                 let fontWeight = String(fontExtended[weightIndex...])
+                print("fam: \(familyName), font: \(fontExtended)")
                 fontsList.append(FontData(family: familyName, name: fontName, weight: fontWeight))
             }
             

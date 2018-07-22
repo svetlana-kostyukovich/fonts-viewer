@@ -24,13 +24,13 @@ class FontDetailsViewController: UIViewController {
         
         if let fontData = fontData {
             navigationItem.title = fontData.name
-            familyNameLabel.text = "Family Name \(fontData.family)"
+            familyNameLabel.text = "Family Name: \(fontData.family)"
             weightLabel.text = "Weight: \(fontData.weight)"
             
             exampleLabel.text = "Example"
             exampleLabel.font = UIFont(name: fontData.fullName, size: exampleSize)
             exampleLabel.textColor = UIColor.green
-            
+            print(exampleLabel.font)
             sizeLabel.text = "Size: \(exampleLabel.font.pointSize)"
         }
 
