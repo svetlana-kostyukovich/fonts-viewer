@@ -30,11 +30,10 @@ class FontDetailsViewController: UIViewController {
             exampleLabel.text = "Example"
             exampleLabel.font = UIFont(name: fontData.fullName, size: exampleSize)
             exampleLabel.textColor = UIColor.green
-            print(exampleLabel.font)
-            sizeLabel.text = "Size: \(exampleLabel.font.pointSize)"
+
+            sizeLabel.text = "Size(pt): \(exampleLabel.font.pointSize)"
         }
 
-        // Do any additional setup after loading the view.
     }
 
     override func viewWillDisappear(_ animated: Bool) { //hide the bar for full screen
@@ -42,15 +41,4 @@ class FontDetailsViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

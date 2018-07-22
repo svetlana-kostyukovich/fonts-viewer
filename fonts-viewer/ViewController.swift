@@ -15,6 +15,7 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     var fontsList = [FontData]()
     
+    // MARK: initials
     override func viewDidLoad() {
         super.viewDidLoad()
         createFontsList()
@@ -23,11 +24,7 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+    // MARK: UICollectionViewDataSource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return fontsList.count
     }
@@ -41,10 +38,17 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
         return cell
     }
     
+    // MARK: - UICollectionViewDelegateFlowLayout
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width/2-10.0, height: collectionView.frame.height/4-10.0)
+    }
     
-    let fontDetailSegueIdentifier = "ShowFontDetailsSegue"
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 10.0, left: 5.0, bottom: 0.0, right: 5.0)
+    }
     
     // MARK: - Navigation
+    let fontDetailSegueIdentifier = "ShowFontDetailsSegue"
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if  segue.identifier == fontDetailSegueIdentifier,
             let destination = segue.destination as? FontDetailsViewController
@@ -57,16 +61,7 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
         }
     }
     
-    // MARK: - UICollectionViewDelegateFlowLayout
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width/2-10.0, height: collectionView.frame.height/4-10.0)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10.0, left: 5.0, bottom: 0.0, right: 5.0)
-    }
-    
-    // MARK: - ListOfFontsInit
+    // MARK: - createFontsList
     private func createFontsList() {
         for familyName in UIFont.familyNames {
             let fontNames = UIFont.fontNames(forFamilyName: familyName)
