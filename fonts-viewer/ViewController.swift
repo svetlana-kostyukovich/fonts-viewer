@@ -12,7 +12,8 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     // MARK: - Properties
     fileprivate let reuseIdentifier = "FontDescriptionCell"
-    fileprivate let rowItems: CGFloat = 2
+    
+    var fontsList = [FontData]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,37 +28,34 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return DataStruct.fonts.count
+        return fontsList.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         //TODO: refactor reuseIdentifier
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FontCell
-        let font = DataStruct.fonts[indexPath.row]
+        let font = fontsList[indexPath.row]
         //TODO: refactor
         cell.displayContent(name: font.name, weight: font.weight)
         cell.backgroundColor = UIColor.blue
         return cell
     }
     
-
+    
     let fontDetailSegueIdentifier = "ShowFontDetailsSegue"
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if  segue.identifier == fontDetailSegueIdentifier,
-            let destination = segue.destination as? FontDetailsViewController,
-            let fontIndex = collectionView?.indexPathsForSelectedItems
-        {}
-        let selectedCell = sender as! UICollectionViewCell
-         //   let indexPath = collectionView?.indexPath(for: selectedCell)
-         //   let sandal = sandals[indexPath!.row]
-        //{
-           // destination.familyNameLabel.text = DataStruct.fonts[fontIndex]
-        //}
-        
+            let destination = segue.destination as? FontDetailsViewController
+        {
+            let selectedCell = sender as! UICollectionViewCell
+            let indexPath = collectionView?.indexPath(for: selectedCell)
+            
+            let fontData = fontsList[indexPath!.row]
+            destination.fontData = fontData
+        }
     }
-    
     
     // MARK: - UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -68,16 +66,10 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
         return UIEdgeInsets(top: 10.0, left: 5.0, bottom: 0.0, right: 5.0)
     }
     
-
-
     
-}
-
-struct DataStruct {
-    static private(set) var fonts = [FontDataStruct]()
-    static func setFonts() {
+    
+    private func getListOfFonts() {
         for familyName in UIFont.familyNames {
-            //UIFont.familyNames.forEach({ familyName in
             let fontNames = UIFont.fontNames(forFamilyName: familyName)
             for fontExtended in fontNames {
                 let nameIndex = fontExtended.index(of: "-") ?? fontExtended.endIndex  //font name extracting
@@ -86,16 +78,9 @@ struct DataStruct {
                 let weightIndex = nameIndex != fontExtended.endIndex ? fontExtended.index(nameIndex, offsetBy: 1) : fontExtended.endIndex // Weight extracting if existing
                 
                 let fontWeight = String(fontExtended[weightIndex...])
-                print("fontName: \(fontName), fontWeight:\(fontWeight)")
-                DataStruct.fonts.append(FontDataStruct(family: familyName, name: fontName, weight: fontWeight))
+                fontsList.append(FontData(family: familyName, name: fontName, weight: fontWeight))
             }
-        
+            
         }
     }
-}
-
-struct FontDataStruct {
-    var family: String
-    var name: String
-    var weight: String
 }

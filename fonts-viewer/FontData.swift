@@ -10,8 +10,13 @@ import Foundation
 import UIKit
 
 struct FontData {
-    let fontName: String
-    let fontWeight: String
+
+    var family: String
+    var name: String
+    var weight: String
     
+    var fullName : String {
+        return weight != "" ? name + "-" + weight : name
+    }
 
 }
