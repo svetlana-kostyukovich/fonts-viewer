@@ -17,7 +17,7 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getListOfFonts()
+        createFontsList()
 
         self.navigationController!.navigationBar.isHidden = true
         // Do any additional setup after loading the view, typically from a nib.
@@ -33,12 +33,11 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        //TODO: refactor reuseIdentifier
+
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FontCell
         let font = fontsList[indexPath.row]
-        //TODO: refactor
+
         cell.displayContent(for: font)
-        cell.backgroundColor = UIColor.blue
         return cell
     }
     
@@ -67,9 +66,8 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
         return UIEdgeInsets(top: 10.0, left: 5.0, bottom: 0.0, right: 5.0)
     }
     
-    
-    
-    private func getListOfFonts() {
+    // MARK: - ListOfFontsInit
+    private func createFontsList() {
         for familyName in UIFont.familyNames {
             let fontNames = UIFont.fontNames(forFamilyName: familyName)
             for fontExtended in fontNames {
@@ -79,10 +77,9 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
                 let weightIndex = nameIndex != fontExtended.endIndex ? fontExtended.index(nameIndex, offsetBy: 1) : fontExtended.endIndex // Weight extracting if existing
                 
                 let fontWeight = String(fontExtended[weightIndex...])
-                print("fam: \(familyName), font: \(fontExtended)")
+                //print("fam: \(familyName), font: \(fontExtended)")
                 fontsList.append(FontData(family: familyName, name: fontName, weight: fontWeight))
             }
-            
         }
     }
 }
