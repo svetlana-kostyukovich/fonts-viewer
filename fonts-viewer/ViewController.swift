@@ -62,7 +62,7 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     // MARK: - createFontsList
-    private func initFontsList() {
+    func initFontsList() {
         for familyName in UIFont.familyNames {
             let fontNames = UIFont.fontNames(forFamilyName: familyName)
             for fontExtended in fontNames {
