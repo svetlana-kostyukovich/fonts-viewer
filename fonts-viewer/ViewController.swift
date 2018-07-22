@@ -37,7 +37,7 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FontCell
         let font = fontsList[indexPath.row]
         //TODO: refactor
-        cell.displayContent(name: font.name, weight: font.weight)
+        cell.displayContent(for: font)
         cell.backgroundColor = UIColor.blue
         return cell
     }
